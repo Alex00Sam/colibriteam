@@ -7,7 +7,7 @@ $app->initLayout('Centered');
 $menu = $app->add('Menu');
 $attractions = $menu->addMenu('Attractions');
 
-$county = $menu->addMenu('County');
+$county = $attractions->addMenu('County');
 $kurzeme = $county->addMenu('Kurzeme');
 $zemgale = $county->addMenu('Zemgale');
 $vidzeme = $county->addMenu('Vīdzeme');
