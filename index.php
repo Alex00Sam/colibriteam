@@ -8,15 +8,23 @@ $menu = $app->add('Menu');
 $attractions = $menu->addMenu('Attractions');
 
 $county = $attractions->addMenu('County');
-$kurzeme = $county->addMenu('Kurzeme');
-$zemgale = $county->addMenu('Zemgale');
-$vidzeme = $county->addMenu('Vīdzeme');
-$latgale = $county->addMenu('Latgale');
+$kurzeme = $county->addItem('Kurzeme');
 
-$ventspils = $kurzeme->addMenu('Ventspils');
-$liepaja = $kurzeme->addMenu('Ventspils');
 
-$riga = $vidzeme->addMenu('Rīga');
-$jurmala = $vidzeme->addMenu('Jūrmala');
+$vidzeme = $county->addItem('Vīdzeme');
+$riga = $vidzeme->addItem('Rīga');
+$jurmala = $vidzeme->addItem('Jūrmala');
 
-$daugavpils = $zemgale->addMenu('Daugavpils');
+$zemgale = $county->addItem('Zemgale');
+
+
+$latgale = $county->addItem('Latgale');
+
+
+
+$ventspils = $kurzeme->addItem('Ventspils');
+$liepaja = $kurzeme->addItem('Ventspils');
+
+
+
+$daugavpils = $zemgale->addItem('Daugavpils');
