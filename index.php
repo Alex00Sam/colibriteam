@@ -1,5 +1,9 @@
 <?php
 require 'vendor/autoload.php';
+session_start();
+
+unset($_SESSION['city']);
+unset($_SESSION['place']);
 
 $app = new \atk4\ui\App('On a trip around Latvia');
 $app->initLayout('Centered');
@@ -8,15 +12,24 @@ $menu = $app->add('Menu');
 $attractions = $menu->addMenu('Attractions');
 
 $county = $attractions->addMenu('County');
-$kurzeme = $county->addMenu('Kurzeme');
-$zemgale = $county->addMenu('Zemgale');
-$vidzeme = $county->addMenu('Vīdzeme');
-$latgale = $county->addMenu('Latgale');
 
-$ventspils = $kurzeme->addMenu('Ventspils');
-$liepaja = $kurzeme->addMenu('Ventspils');
+ $kurzeme = $county->addMenu('Kurzeme');
+    $ventspils = $kurzeme->addItem('Ventspils');
+    $ventspils->link(['main','city'=>'Ventspils']);
 
-$riga = $vidzeme->addMenu('Rīga');
-$jurmala = $vidzeme->addMenu('Jūrmala');
+    $liepaja = $kurzeme->addItem('Liepaja');
+    $liepaja->link(['main','city'=>'Liepaja']);
 
-$daugavpils = $zemgale->addMenu('Daugavpils');
+ $vidzeme = $county->addMenu('Vīdzeme');
+    $riga = $vidzeme->addItem('Rīga');
+    $riga->link(['main','city'=>'Rīga']);
+    $jurmala = $vidzeme->addItem('Jūrmala');
+    $jurmala->link(['main','city'=>'Jūrmala']);
+
+ $zemgale = $county->addMenu('Zemgale');
+    $jelgava = $zemgale->addItem('Jelgava');
+    $Jelgava->link(['main','city'=>'Jelgava']);
+
+ $latgale = $county->addMenu('Latgale');
+    $daugavpils = $latgale->addItem('Daugavpils');
+    $daugavpils->link(['main','city'=>'Daugavpils']);
