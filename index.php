@@ -1,5 +1,9 @@
 <?php
 require 'vendor/autoload.php';
+session_start();
+
+unset($_SESSION['city']);
+unset($_SESSION['place']);
 
 $app = new \atk4\ui\App('On a trip around Latvia');
 $app->initLayout('Centered');
