@@ -13,18 +13,18 @@ $attractions = $menu->addMenu('Attractions');
 
 $county = $attractions->addMenu('County');
 
- $kurzeme = $county->addItem('Kurzeme');
+ $kurzeme = $county->addMenu('Kurzeme');
     $ventspils = $kurzeme->addItem('Ventspils');
     $ventspils->link('main.php',$_SESSION['city']='Ventspils');
 
     $liepaja = $kurzeme->addItem('Liepaja');
 
- $vidzeme = $county->addItem('Vīdzeme');
+ $vidzeme = $county->addMenu('Vīdzeme');
     $riga = $vidzeme->addItem('Rīga');
     $jurmala = $vidzeme->addItem('Jūrmala');
 
- $zemgale = $county->addItem('Zemgale');
+ $zemgale = $county->addMenu('Zemgale');
     $jelgava = $zemgale->addItem('Daugavpils');
 
- $latgale = $county->addItem('Latgale');
+ $latgale = $county->addMenu('Latgale');
     $daugavpils = $latgale->addItem('Daugavpils');
