@@ -15,6 +15,8 @@ $county = $attractions->addMenu('County');
 
  $kurzeme = $county->addItem('Kurzeme');
     $ventspils = $kurzeme->addItem('Ventspils');
+    $ventspils->link('main.php',$_SESSION['city']='Ventspils');
+
     $liepaja = $kurzeme->addItem('Liepaja');
 
  $vidzeme = $county->addItem('Vīdzeme');
