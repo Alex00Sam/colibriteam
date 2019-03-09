@@ -23,13 +23,20 @@ $county = $attractions->addMenu('County');
  $vidzeme = $county->addMenu('Vīdzeme');
     $riga = $vidzeme->addItem('Rīga');
     $riga->link(['main','city'=>'Rīga']);
+
     $jurmala = $vidzeme->addItem('Jūrmala');
     $jurmala->link(['main','city'=>'Jūrmala']);
 
  $zemgale = $county->addMenu('Zemgale');
     $jelgava = $zemgale->addItem('Jelgava');
-    $Jelgava->link(['main','city'=>'Jelgava']);
+    $jelgava->link(['main','city'=>'Jelgava']);
+
+    $bauska = $zemgale->addItem('Bauska');
+    $bauska->link(['main','city'=>'Bauska']);
 
  $latgale = $county->addMenu('Latgale');
     $daugavpils = $latgale->addItem('Daugavpils');
     $daugavpils->link(['main','city'=>'Daugavpils']);
+
+    $rezekne = $latgale->addItem('Rēzekne');
+    $rezekne->link(['main','city'=>'Rēzekne']);
