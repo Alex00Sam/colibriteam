@@ -15,16 +15,21 @@ $county = $attractions->addMenu('County');
 
  $kurzeme = $county->addMenu('Kurzeme');
     $ventspils = $kurzeme->addItem('Ventspils');
-    $ventspils->link('main.php',$_SESSION['city']='Ventspils');
+    $ventspils->link(['main','city'=>'Ventspils']);
 
     $liepaja = $kurzeme->addItem('Liepaja');
+    $liepaja->link(['main','city'=>'Liepaja']);
 
  $vidzeme = $county->addMenu('Vīdzeme');
     $riga = $vidzeme->addItem('Rīga');
+    $riga->link(['main','city'=>'Rīga']);
     $jurmala = $vidzeme->addItem('Jūrmala');
+    $jurmala->link(['main','city'=>'Jūrmala']);
 
  $zemgale = $county->addMenu('Zemgale');
-    $jelgava = $zemgale->addItem('Daugavpils');
+    $jelgava = $zemgale->addItem('Jelgava');
+    $Jelgava->link(['main','city'=>'Jelgava']);
 
  $latgale = $county->addMenu('Latgale');
     $daugavpils = $latgale->addItem('Daugavpils');
+    $daugavpils->link(['main','city'=>'Daugavpils']);
