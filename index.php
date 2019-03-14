@@ -7,7 +7,6 @@ unset($_SESSION['city']);
 unset($_SESSION['place']);
 
 $app = new App('public');
-$app->initLayout('Centered');
 
 
 $col = $app->layout->add('Columns');
