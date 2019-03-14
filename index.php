@@ -5,8 +5,11 @@ session_start();
 unset($_SESSION['city']);
 unset($_SESSION['place']);
 
-$app = new \atk4\ui\App('On a trip around Latvia');
+$app = new \atk4\ui\App('Latvia Journey');
 $app->initLayout('Centered');
+
+$app->add(['Header', 'Sveicināti!!!']);
+$app->add(['Text', 'Šeit Jūs '])
 
 $menu = $app->add('Menu');
 $attractions = $menu->addMenu('Attractions');
