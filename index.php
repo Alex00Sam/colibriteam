@@ -1,43 +1,53 @@
 <?php
 require 'vendor/autoload.php';
+require 'app.php';
 session_start();
 
 unset($_SESSION['city']);
 unset($_SESSION['place']);
 
-$app = new \atk4\ui\App('Latvia Journey');
+$app = new App('public');
 $app->initLayout('Centered');
 
-$app->add(['Header', 'Sveicināti!!!']);
-$app->add(['Text', 'Šeit Jūs '])
 
-$menu = $app->add('Menu');
-$attractions = $menu->addMenu('Attractions');
+$col = $app->layout->add('Columns');
+$col_left = $col->addColumn(8);
+$col_right = $col->addColumn(8);
 
-$county = $attractions->addMenu('County');
+$col_left->add(['Header', 'Sveicināti!!!','massive red']);
+$message = $col_left->add(['Message', 'Šeit Jūs varēsiet uzzināt par ekskursijām ap Latviju.', 'type'=>'positive','icon'=>'smile outline']);
 
- $kurzeme = $county->addMenu('Kurzeme');
+
+$img = 'http://www.clker.com/cliparts/e/5/2/8/1195430727372284989eady_Treasure_Map.svg.hi.png';
+$image = $col_left->add(['Image',$img]);
+
+$menu = $col_right->add(['Menu','massive secondary vertical']);
+$attractions = $menu->addGroup('Attractions');
+
+$county = $attractions->addGroup('County');
+
+ $kurzeme = $county->addGroup('Kurzeme');
     $ventspils = $kurzeme->addItem('Ventspils');
     $ventspils->link(['main','city'=>'Ventspils']);
 
     $liepaja = $kurzeme->addItem('Liepaja');
     $liepaja->link(['main','city'=>'Liepaja']);
 
- $vidzeme = $county->addMenu('Vīdzeme');
+ $vidzeme = $county->addGroup('Vīdzeme');
     $riga = $vidzeme->addItem('Rīga');
     $riga->link(['main','city'=>'Rīga']);
 
     $jurmala = $vidzeme->addItem('Jūrmala');
     $jurmala->link(['main','city'=>'Jūrmala']);
 
- $zemgale = $county->addMenu('Zemgale');
+ $zemgale = $county->addGroup('Zemgale');
     $jelgava = $zemgale->addItem('Jelgava');
     $jelgava->link(['main','city'=>'Jelgava']);
 
     $bauska = $zemgale->addItem('Bauska');
     $bauska->link(['main','city'=>'Bauska']);
 
- $latgale = $county->addMenu('Latgale');
+ $latgale = $county->addGroup('Latgale');
     $daugavpils = $latgale->addItem('Daugavpils');
     $daugavpils->link(['main','city'=>'Daugavpils']);
 
