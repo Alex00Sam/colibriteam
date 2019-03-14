@@ -12,15 +12,17 @@ Class App extends \atk4\ui\App{
 
           $logo = 'image_compas.png';
 
+           $this->layout->add(['Image', $logo, 'medium centered'], 'Header');
+
           $this->layout->add([
              'Header',
-             '',
+             'Latvia Journey',
              'size'=>'huge',
              'aligned'=>'center'
            ],'Header');
 
 
-           $this->layout->add(['Image', $logo, 'medium centered'], 'Header');
+
 
         }elseif($mode == 'admin') {
            $this->initLayout('Admin');
