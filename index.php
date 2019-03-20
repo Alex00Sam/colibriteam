@@ -23,30 +23,30 @@ $image = $col_left->add(['Image',$img]);
 $menu = $col_right->add(['Menu','massive secondary vertical']);
 $attractions = $menu->addGroup('Attractions');
 
-$county = $attractions->addGroup('County');
 
- $kurzeme = $county->addGroup('Kurzeme');
+
+ $kurzeme = $menu->addGroup('Kurzeme');
     $ventspils = $kurzeme->addItem('Ventspils');
     $ventspils->link(['main','city'=>'Ventspils']);
 
     $liepaja = $kurzeme->addItem('Liepaja');
     $liepaja->link(['main','city'=>'Liepaja']);
 
- $vidzeme = $county->addGroup('Vīdzeme');
+ $vidzeme = $menu->addGroup('Vīdzeme');
     $riga = $vidzeme->addItem('Rīga');
     $riga->link(['main','city'=>'Rīga']);
 
     $jurmala = $vidzeme->addItem('Jūrmala');
     $jurmala->link(['main','city'=>'Jūrmala']);
 
- $zemgale = $county->addGroup('Zemgale');
+ $zemgale = $menu->addGroup('Zemgale');
     $jelgava = $zemgale->addItem('Jelgava');
     $jelgava->link(['main','city'=>'Jelgava']);
 
     $bauska = $zemgale->addItem('Bauska');
     $bauska->link(['main','city'=>'Bauska']);
 
- $latgale = $county->addGroup('Latgale');
+ $latgale = $menu->addGroup('Latgale');
     $daugavpils = $latgale->addItem('Daugavpils');
     $daugavpils->link(['main','city'=>'Daugavpils']);
 
