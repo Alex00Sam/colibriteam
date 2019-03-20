@@ -1,9 +1,18 @@
 <?php
 require 'vendor/autoload.php';
+require 'app.php';
+require 'connection.php';
+$app = new App('public');
+
+$place = new Places($db);
+$place->load($_GET['n']);
+$header=$app->add(['Header',$place['name']]);
+
+$image=$app->add(['Image',$place['image']]);
+
+$text=$app->add(['Text',$place['description']]);
 
 
-$app = new \atk4\ui\App(' x место ');
-$app->initLayout('Centered');
 
-$Button=$app->add('LNB');
-$button->link('lnb.php');
+$button=$app->add(['Button','Add to favourites']);
+$button->link('favorit.php');

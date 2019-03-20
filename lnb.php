@@ -1,9 +1,11 @@
 <?php
 require 'vendor/autoload.php';
+require 'app.php';
+require 'connection.php';
+$app = new App('public');
 
-$app = new \atk4\ui\App('National library of Latvia');
-$app->initLayout('Centered');
-
+$place = new Places($db);
+$place->load(1);
 $header=$app->add(['Header',$place['name']]);
 
 $image=$app->add(['Image',$place['image']]);

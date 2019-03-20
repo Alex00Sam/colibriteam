@@ -1,7 +1,7 @@
 
 <?php
 require 'vendor/autoload.php';
-$db = new \atk4\data\Persistence_SQL('mysql:dbname=bank;host=localhost','sexking','lehaloh');
+$db = new \atk4\data\Persistence_SQL('mysql:dbname=tourism in latvia;host=localhost','MySite','12345');
 
 Class Edges extends \atk4\data\Model {
   public $table ='edges';
@@ -22,7 +22,7 @@ Class Cities extends \atk4\data\Model {
 }
 
 Class Places extends \atk4\data\Model {
-  public $table ='accounts';
+  public $table ='places';
   Function init() {
     parent::init();
     $this -> addField('name');
@@ -31,7 +31,3 @@ Class Places extends \atk4\data\Model {
     $this -> hasOne('cities_id',new Cities);
   }
 }
-
-$edge = new Edges($db);
-$edge = new Edges($db);
-$edge = new $;
