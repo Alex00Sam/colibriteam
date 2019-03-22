@@ -1,7 +1,7 @@
 
 <?php
 require 'vendor/autoload.php';
-$db = new \atk4\data\Persistence_SQL('mysql:dbname=tourism in latvia;host=localhost','MySite','12345');
+$db = new \atk4\data\Persistence_SQL('mysql:dbname=tourism in latvia;host=localhost','root','');
 
 Class Edges extends \atk4\data\Model {
   public $table ='edges';
@@ -28,6 +28,7 @@ Class Places extends \atk4\data\Model {
     $this -> addField('name');
     $this -> addField('description');
     $this -> addField('image');
+    $this-> addField('is_favourite');
     $this -> hasOne('cities_id',new Cities);
   }
 }
