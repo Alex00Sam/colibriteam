@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.9
--- https://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Мар 20 2019 г., 18:58
--- Версия сервера: 5.6.37
--- Версия PHP: 7.1.8
+-- Хост: 127.0.0.1
+-- Время создания: Мар 22 2019 г., 19:10
+-- Версия сервера: 10.1.38-MariaDB
+-- Версия PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -26,12 +28,12 @@ SET time_zone = "+00:00";
 -- Структура таблицы `edges`
 --
 
-CREATE TABLE IF NOT EXISTS `edges` (
+CREATE TABLE `edges` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `description` varchar(30) NOT NULL,
   `image` varchar(40) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `edges`
@@ -49,21 +51,22 @@ INSERT INTO `edges` (`id`, `name`, `description`, `image`) VALUES
 -- Структура таблицы `places`
 --
 
-CREATE TABLE IF NOT EXISTS `places` (
+CREATE TABLE `places` (
   `id` int(11) NOT NULL,
   `name` text CHARACTER SET utf8 COLLATE utf8_latvian_ci NOT NULL,
   `description` text CHARACTER SET utf8 COLLATE utf8_latvian_ci NOT NULL,
   `image` text CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
+  `is_favourite` tinyint(1) NOT NULL,
   `cities_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `places`
 --
 
-INSERT INTO `places` (`id`, `name`, `description`, `image`, `cities_id`) VALUES
-(1, 'Latvijas Nacionālā bibliotēka', 'Latvijas Nacionālā bibliotēka (LNB) ir vispārpieejama universāla zinātniskā bibliotēka,[1] kas dibināta 1919. gada 29. augustā. LNB ir Kultūras ministrijas pārraudzībā esoša nacionālas nozīmes valsts kultūras iestāde. Tās pirmais vadītājs bija ievērojamais bibliotekārs un latviešu zinātniskās bibliogrāfijas pamatlicējs Jānis Misiņš. Pašreizējais bibliotēkas direktors ir Andris Vilks.', 'https://www.lnb.lv/sites/default/files/field/image/img_0173_foto-anete-krumina.jpg', 1),
-(2, 'Vecrīga', 'Vecrīga, (apkaimes nosaukums Vecpilsēta) arī Iekšrīga, ir Rīgas pilsētas vissenākā daļa, kā arī apkaime, kuras robežas veido šādu ielu ass līnijas: K. Valdemāra iela, Z. A. Meierovica bulvāris, Aspazijas bulvāris, 13. Janvāra iela un 11. novembra krastmala.[1] Kopš 1967. gada Vecrīga ir valsts aizsargājamā zona, kopš 1983. gada pilsētbūvniecības piemineklis, 1997. gadā Rīgas vēsturisko centru un tostarp Vecrīgu UNESCO iekļāva Pasaules mantojuma sarakstā, bet 2007. gadā, pateicoties Vecrīgas panorāmai un siluetam, Rīga ieguva Eiropas mantojuma zīmi.', 'https://upload.wikimedia.org/wikipedia/lv/a/a5/Riga_Vecpilseta.jpg', 1);
+INSERT INTO `places` (`id`, `name`, `description`, `image`, `is_favourite`, `cities_id`) VALUES
+(1, 'Latvijas Nacionālā bibliotēka', 'Latvijas Nacionālā bibliotēka (LNB) ir vispārpieejama universāla zinātniskā bibliotēka,[1] kas dibināta 1919. gada 29. augustā. LNB ir Kultūras ministrijas pārraudzībā esoša nacionālas nozīmes valsts kultūras iestāde. Tās pirmais vadītājs bija ievērojamais bibliotekārs un latviešu zinātniskās bibliogrāfijas pamatlicējs Jānis Misiņš. Pašreizējais bibliotēkas direktors ir Andris Vilks.', 'https://www.lnb.lv/sites/default/files/field/image/img_0173_foto-anete-krumina.jpg', 1, 1),
+(2, 'Vecrīga', 'Vecrīga, (apkaimes nosaukums Vecpilsēta) arī Iekšrīga, ir Rīgas pilsētas vissenākā daļa, kā arī apkaime, kuras robežas veido šādu ielu ass līnijas: K. Valdemāra iela, Z. A. Meierovica bulvāris, Aspazijas bulvāris, 13. Janvāra iela un 11. novembra krastmala.[1] Kopš 1967. gada Vecrīga ir valsts aizsargājamā zona, kopš 1983. gada pilsētbūvniecības piemineklis, 1997. gadā Rīgas vēsturisko centru un tostarp Vecrīgu UNESCO iekļāva Pasaules mantojuma sarakstā, bet 2007. gadā, pateicoties Vecrīgas panorāmai un siluetam, Rīga ieguva Eiropas mantojuma zīmi.', 'https://upload.wikimedia.org/wikipedia/lv/a/a5/Riga_Vecpilseta.jpg', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -71,13 +74,13 @@ INSERT INTO `places` (`id`, `name`, `description`, `image`, `cities_id`) VALUES
 -- Структура таблицы `сities`
 --
 
-CREATE TABLE IF NOT EXISTS `сities` (
+CREATE TABLE `сities` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `description` varchar(30) NOT NULL,
   `image` varchar(40) NOT NULL,
   `edges_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `сities`
@@ -118,17 +121,20 @@ ALTER TABLE `сities`
 -- AUTO_INCREMENT для таблицы `edges`
 --
 ALTER TABLE `edges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT для таблицы `places`
 --
 ALTER TABLE `places`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT для таблицы `сities`
 --
 ALTER TABLE `сities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
@@ -144,6 +150,7 @@ ALTER TABLE `places`
 --
 ALTER TABLE `сities`
   ADD CONSTRAINT `сities_ibfk_1` FOREIGN KEY (`edges_id`) REFERENCES `edges` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
