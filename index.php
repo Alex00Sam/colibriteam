@@ -1,6 +1,8 @@
+
 <?php
 require 'vendor/autoload.php';
 require 'app.php';
+require 'connection.php';
 session_start();
 
 unset($_SESSION['city']);
@@ -19,10 +21,14 @@ $message = $col_left->add(['Message', 'Šeit Jūs varēsiet uzzināt par ekskurs
 
 $img = 'http://www.clker.com/cliparts/e/5/2/8/1195430727372284989eady_Treasure_Map.svg.hi.png';
 $image = $col_left->add(['Image',$img]);
-
+$city = new Cities($db);
 $menu = $col_right->add(['Menu','massive secondary vertical']);
-$attractions = $menu->addGroup('Attractions');
-
+$cities = $menu->addGroup('Cities');
+foreach ($city as $a) {
+  $cities->addItem($a['name']);
+}
+//$cities->addItem(new Cities($db),['name']);
+/*
 $county = $attractions->addGroup('County');
 
  $kurzeme = $county->addGroup('Kurzeme');
@@ -52,3 +58,4 @@ $county = $attractions->addGroup('County');
 
     $rezekne = $latgale->addItem('Rēzekne');
     $rezekne->link(['main','city'=>'Rēzekne']);
+*/
