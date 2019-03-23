@@ -27,6 +27,8 @@ $cities = $menu->addGroup('Cities');
 foreach ($city as $a) {
   $cities->addItem($a['name']);
 }
+
+$app->add(['CRUD'])->setModel(new Places($db));
 //$cities->addItem(new Cities($db),['name']);
 /*
 $county = $attractions->addGroup('County');
