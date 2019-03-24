@@ -16,3 +16,8 @@ $text=$app->add(['Text',$place['description']]);
 
 $button=$app->add(['Button','Add to favourites']);
 $button->link('favorit.php');
+
+$button=$app->add(['Button','Add to favourites']);
+$button->on('click',function($button) use ($place){
+$place['is_favourite']=true;
+});
