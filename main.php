@@ -1,24 +1,32 @@
 <?php
 require 'vendor/autoload.php';
+require 'app.php';
+require 'connection.php';
+
 session_start();
 
 
 //$_SESSION['city']=$_GET['city'];
 
 //$app = new \atk4\ui\App($_SESSION['city']);
-$app = new \atk4\ui\App('Rīga');
-$app->initLayout('Centered');
+$app = new App('public');
 
+$city = new Cities ($db);
+$city->load($_SESSION['city_id']);
+$places = $city->ref('Places');
+
+
+/*foreach ($places as $a) {
+  $img = $app->add(['Image',$a['image'], 'small']);
+//  $img->link(['place']);
+  $img->on('click',function($img)use($a){
+    return new \atk4\ui\jsExpression('document.location="place.php?id={$a->id}"');
+  });
+}*/
 
 $img = 'https://www.lnb.lv/sites/default/files/field/image/img_0173_foto-anete-krumina.jpg';
 $image = $app->add(['Image',$img,'small']);
 $image->on('click',function($image){
-  return new \atk4\ui\jsExpression('document.location="lnb.php"');
-});
+  return new \atk4\ui\jsExpression('document.location="https://www.google.ru/"');
 
-
-$img2 = 'https://www.likealocalguide.com/media/cache/0c/07/0c071343953aed5a2c3f6fa47484482c.jpg';
-$image2 = $app->add(['Image',$img2,'small']);
-$image2->on('click',function($image2){
-  return new \atk4\ui\jsExpression('document.location="oldriga1.php"');
 });

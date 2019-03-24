@@ -11,22 +11,98 @@ unset($_SESSION['place']);
 $app = new App('public');
 
 
+
 $col = $app->layout->add('Columns');
+
 $col_left = $col->addColumn(8);
 $col_right = $col->addColumn(8);
 
 $col_left->add(['Header', 'Sveicināti!!!','massive red']);
 $message = $col_left->add(['Message', 'Šeit Jūs varēsiet uzzināt par ekskursijām ap Latviju.', 'type'=>'positive','icon'=>'smile outline']);
 
+$button1 = $app->layout->add(['Button','Favourites', ' purple']);
+$button1->link(['favorit']);
 
 $img = 'http://www.clker.com/cliparts/e/5/2/8/1195430727372284989eady_Treasure_Map.svg.hi.png';
-$image = $col_left->add(['Image',$img]);
+$image = $col_right->add(['Image',$img]);
+
+$app->add(['ui'=>'divider']);
+
+$col_a[0] = $col ->addColumn(2);
+$col_a[1] = $col ->addColumn(2);
+$col_a[2] = $col ->addColumn(2);
+$col_a[3] = $col ->addColumn(2);
+$col_a[4] = $col ->addColumn(2);
+$col_a[5] = $col ->addColumn(2);
+$menu_a[0] = $col_a[0]->add(['Menu','massive secondary vertical']);
+$menu_a[1] = $col_a[1]->add(['Menu','massive secondary vertical']);
+$menu_a[2] = $col_a[2]->add(['Menu','massive secondary vertical']);
+$menu_a[3] = $col_a[3]->add(['Menu','massive secondary vertical']);
+$menu_a[4] = $col_a[4]->add(['Menu','massive secondary vertical']);
+$menu_a[5] = $col_a[5]->add(['Menu','massive secondary vertical']);
+
+
+
 $city = new Cities($db);
-$menu = $col_right->add(['Menu','massive secondary vertical']);
-$cities = $menu->addGroup('Cities');
+//$menu = $col1->add(['Menu','massive secondary vertical']);
+//$cities = $menu->addGroup('Cities');
+$i=0;
+
+
 foreach ($city as $a) {
-  $cities->addItem($a['name']);
+  $i=$i+1;
+  $item = $menu_a[$i/20]->addItem($a['name']);
+
+  $item->link(['bruh','id'=>$a->id]);
+
+//  $item->on('click',function($item)use($a){
+//
+//    return new \atk4\ui\jsExpression('document.location="place.php"');
+//  });
+
+
 }
+/*foreach ($city as $a) {
+
+  $i=$i+1;
+  if ($i > 20) {
+
+    $menu = $col2->add(['Menu','massive secondary vertical']);
+//    $cities = $menu->addGroup('Cities');
+    $menu->addItem($a['name']);
+    if ($i > 40) {
+
+      $menu = $col3->add(['Menu','massive secondary vertical']);
+  //    $cities = $menu->addGroup('Cities');
+      $menu->addItem($a['name']);
+      if ($i > 60) {
+
+        $menu = $col4->add(['Menu','massive secondary vertical']);
+    //    $cities = $menu->addGroup('Cities');
+        $menu->addItem($a['name']);
+        if ($i > 80) {
+
+          $menu = $col5->add(['Menu','massive secondary vertical']);
+      //    $cities = $menu->addGroup('Cities');
+          $menu->addItem($a['name']);
+          if ($i > 100) {
+
+            $menu = $col6->add(['Menu','massive secondary vertical']);
+        //    $cities = $menu->addGroup('Cities');
+            $menu->addItem($a['name']);
+          }
+        }
+      }
+    }
+  } else {
+    $menu->addItem($a['name']);
+  }
+
+
+
+
+}*/
+
 
 $app->add(['CRUD'])->setModel(new Places($db));
 //$cities->addItem(new Cities($db),['name']);
