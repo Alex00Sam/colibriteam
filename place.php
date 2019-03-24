@@ -17,4 +17,5 @@ $button=$app->add(['Button','Add to favourites']);
 $button->on('click',function($button) use ($place){
 $place['is_favourite']=true;
 $place->save();
+return $button;
 });
