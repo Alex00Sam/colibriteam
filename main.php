@@ -16,13 +16,13 @@ $city->load($_SESSION['city_id']);
 $places = $city->ref('Places');
 
 
-/*foreach ($places as $a) {
+foreach ($places as $a) {
   $img = $app->add(['Image',$a['image'], 'small']);
 //  $img->link(['place']);
   $img->on('click',function($img)use($a){
     return new \atk4\ui\jsExpression('document.location="place.php?id={$a->id}"');
   });
-}*/
+}
 
 $img = 'https://www.lnb.lv/sites/default/files/field/image/img_0173_foto-anete-krumina.jpg';
 $image = $app->add(['Image',$img,'small']);
