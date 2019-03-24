@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2019 at 09:57 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.1.27
+-- Generation Time: Mar 24, 2019 at 03:37 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cities` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `name` varchar(30) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `cities`
@@ -171,14 +171,14 @@ CREATE TABLE `places` (
   `image` text CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   `is_favourite` tinyint(1) NOT NULL,
   `cities_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `places`
 --
 
 INSERT INTO `places` (`id`, `name`, `description`, `image`, `is_favourite`, `cities_id`) VALUES
-(1, 'Latvijas Nacionālā bibliotēka', 'Latvijas Nacionālā bibliotēka (LNB) ir vispārpieejama universāla zinātniskā bibliotēka, kas dibināta 1919. gada 29. augustā. LNB ir Kultūras ministrijas pārraudzībā esoša nacionālas nozīmes valsts kultūras iestāde. Tās pirmais vadītājs bija ievērojamais bibliotekārs un latviešu zinātniskās bibliogrāfijas pamatlicējs Jānis Misiņš. Pašreizējais bibliotēkas direktors ir Andris Vilks.', 'https://www.lnb.lv/sites/default/files/field/image/img_0173_foto-anete-krumina.jpg', 0, 1),
+(1, 'Latvijas Nacionālā bibliotēka', 'Latvijas Nacionālā bibliotēka (LNB) ir vispārpieejama universāla zinātniskā bibliotēka, kas dibināta 1919. gada 29. augustā. LNB ir Kultūras ministrijas pārraudzībā esoša nacionālas nozīmes valsts kultūras iestāde. Tās pirmais vadītājs bija ievērojamais bibliotekārs un latviešu zinātniskās bibliogrāfijas pamatlicējs Jānis Misiņš. Pašreizējais bibliotēkas direktors ir Andris Vilks.', 'https://www.lnb.lv/sites/default/files/field/image/img_0173_foto-anete-krumina.jpg', 1, 1),
 (2, 'Vecrīga', 'Vecrīga, (apkaimes nosaukums Vecpilsēta) arī Iekšrīga, ir Rīgas pilsētas vissenākā daļa, kā arī apkaime, kuras robežas veido šādu ielu ass līnijas: K. Valdemāra iela, Z. A. Meierovica bulvāris, Aspazijas bulvāris, 13. Janvāra iela un 11. novembra krastmala. Kopš 1967. gada Vecrīga ir valsts aizsargājamā zona, kopš 1983. gada pilsētbūvniecības piemineklis, 1997. gadā Rīgas vēsturisko centru un tostarp Vecrīgu UNESCO iekļāva Pasaules mantojuma sarakstā, bet 2007. gadā, pateicoties Vecrīgas panorāmai un siluetam, Rīga ieguva Eiropas mantojuma zīmi.', 'https://upload.wikimedia.org/wikipedia/lv/a/a5/Riga_Vecpilseta.jpg', 0, 1),
 (3, 'Daugavpils novadpētniecības un mākslas muzejs', 'Daugavpils Novadpētniecības un mākslas muzejs ir viens no vecākajiem un lielākajiem muzejiem Latgalē. Tas dibināts 1938.gadā. Atrodas vienā no skaistākajām pilsētas ēkām – 1883.gadā jūgendstilā celtajā ēkā, kura ir kultūrvēsturisks arhitektūras piemineklis.', 'https://media-cdn.tripadvisor.com/media/photo-o/09/bb/f7/9e/caption.jpg', 0, 2),
 (4, 'Tramvaju satiksme Daugavpilī', 'Tramvaju satiksme Daugavpilī ir viens no sabiedriskā transporta veidiem Daugavpils pilsētā, Latvijā. To ar tramvajiem nodrošina AS \"Daugavpils satiksme\", bet līdz 2013. gada 31. decembrim to nodrošināja AS \"Tramvaju uzņēmums\" (zināms arī kā \"Daugavpils Tramvaju uzņēmums\").[1] Tramvaju satiksme tiek nodrošināta pa 3 maršrutiem, kuru kopgarums ir 27 km. AS \"Daugavpils satiksme\" rīcībā ir 39 tramvaju pasažieru vagoni + 5 dienesta vagoni, regulārā ekspluatācijā atrodas 38 pasažieru vagoni. Daugavpilī ir 2 tramvaju depo, viens - Jātnieku ielā (reizē tas ir arī g/p \"Butļerova iela\" 1. un 2. maršrutam), kur mūsdienās bāzēta lielākā daļa vagonu, bet otrs - 18. novembra ielā. Braukšanas maksa Daugavpils tramvajā ir 0,43 EUR darbdienās un sestdienās un 0,21 EUR svētdienās un svētku dienās. Tramvaja sliežu platums ir 1524 mm.', 'https://upload.wikimedia.org/wikipedia/lv/b/bd/Daugavpils_tramvajs.jpg', 0, 2),
@@ -215,7 +215,7 @@ ALTER TABLE `places`
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT for table `places`
