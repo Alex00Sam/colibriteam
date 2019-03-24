@@ -26,7 +26,9 @@ $places = $city->ref('Places');
 
 $img = 'https://www.lnb.lv/sites/default/files/field/image/img_0173_foto-anete-krumina.jpg';
 $image = $app->add(['Image',$img,'small']);
-$image->on('click',function($image){
-  return new \atk4\ui\jsExpression('document.location="https://www.google.ru/"');
 
+$link='document.location="lnb.php"';
+$image->on('click',function($image)use ($link,$app){
+  //return new \atk4\ui\jsExpression($link);
+  return $app->jsRedirect('https://translate.google.com');
 });

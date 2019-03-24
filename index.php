@@ -18,9 +18,12 @@ $col_left = $col->addColumn(8);
 $col_right = $col->addColumn(8);
 
 $col_left->add(['Header', 'Sveicināti!!!','massive red']);
-$message = $col_left->add(['Message', 'Šeit Jūs varēsiet uzzināt par ekskursijām ap Latviju.', 'type'=>'positive','icon'=>'smile outline']);
+$message = $col_left->add(['Message', 'Šeit Jūs varēsiet uzzināt par ekskursijām ap Latviju. Mēs Jūms piedāvām tādas pilsētas
+                                       kā Rīga, Jūrmala, Jelgava, Daugavpils un citi.
+                                       Jūs arī varāt pievienot Jums interesantas vietas favorītiem,
+                                       lai citā laikā velreiz noskatīties.', 'type'=>'positive','icon'=>'smile outline']);
 
-$button1 = $app->layout->add(['Button','Favourites', ' purple']);
+$button1 = $col_left->add(['Button','Favourites', 'purple']);
 $button1->link(['favorit']);
 
 $img = 'http://www.clker.com/cliparts/e/5/2/8/1195430727372284989eady_Treasure_Map.svg.hi.png';
@@ -28,6 +31,7 @@ $image = $col_right->add(['Image',$img]);
 
 $app->add(['ui'=>'divider']);
 
+$col = $app->layout->add('Columns');
 $col_a[0] = $col ->addColumn(2);
 $col_a[1] = $col ->addColumn(2);
 $col_a[2] = $col ->addColumn(2);
@@ -51,7 +55,7 @@ $i=0;
 
 foreach ($city as $a) {
   $i=$i+1;
-  $item = $menu_a[$i/20]->addItem($a['name']);
+ $item = $menu_a[$i/20]->addItem($a['name']);
 
   $item->link(['bruh','id'=>$a->id]);
 
