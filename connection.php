@@ -16,7 +16,6 @@ Class Cities extends \atk4\data\Model {
   Function init() {
     parent::init();
     $this -> addField('name');
-    $this -> hasOne('edges_id',new Edges);
     $this -> hasMany('Places',new Places);
   }
 }
