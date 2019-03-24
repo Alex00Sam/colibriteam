@@ -1,5 +1,13 @@
-
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title></title>
+ </head>
+ <body>
+ </body>
+</html>
 <?php
+
 require 'vendor/autoload.php';
 $db = new \atk4\data\Persistence_SQL('mysql:dbname=tourism in latvia;host=localhost','root','');
 
