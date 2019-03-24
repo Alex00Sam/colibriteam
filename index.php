@@ -108,7 +108,7 @@ foreach ($city as $a) {
 }*/
 
 
-$app->add(['CRUD'])->setModel(new Places($db));
+//$app->add(['CRUD'])->setModel(new Places($db));
 //$cities->addItem(new Cities($db),['name']);
 /*
 $county = $attractions->addGroup('County');
